@@ -1,5 +1,6 @@
 import { currentCart } from '@wix/ecom';
 import { OAuthStrategy, createClient } from '@wix/sdk';
+import { collections, items } from '@wix/data';
 import { products } from '@wix/stores';
 import React, { FC, useMemo } from 'react';
 
@@ -10,6 +11,8 @@ function getWixClient() {
         modules: {
             products,
             currentCart,
+            collections,
+            items,
         },
         auth: OAuthStrategy({
             clientId: '3b03f31c-e5fc-4251-a9b8-4a2f749042b4',
