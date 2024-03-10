@@ -12,7 +12,7 @@ function getWixClient() {
             currentCart,
         },
         auth: OAuthStrategy({
-            clientId: '84452635-47cb-45b8-be5b-ca3938e93193',
+            clientId: '3b03f31c-e5fc-4251-a9b8-4a2f749042b4',
             // tokens: { refreshToken, accessToken: { value: '', expiresAt: 0 } },
         }),
     });
