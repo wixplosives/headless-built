@@ -7,7 +7,8 @@ import { useContext, useEffect, useState } from 'react';
 import { WixAPIContext } from '../../api/WixAPIContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/product-card/product-card';
-
+import { BlocksRenderer } from '../../blocks/blocks-renderer';
+import { type items } from '@wix/data';
 export interface HomePageProps {
     className?: string;
 }
@@ -15,6 +16,8 @@ export interface HomePageProps {
 export const HomePage = ({ className }: HomePageProps) => {
     const navigate = useNavigate();
     const [products, setProducts] = useState<Array<products.Product>>([]);
+    const [pages, setPages] = useState<Array<{ _id: string }>>([]);
+    const [pageData, setPageData] = useState<Array<items.DataItem>>([]);
 
     const wixApi = useContext(WixAPIContext);
 
@@ -22,10 +25,25 @@ export const HomePage = ({ className }: HomePageProps) => {
         wixApi.getPromotedProducts().then((prods) => {
             setProducts(prods);
         });
+        wixApi.getPages().then((pages) => {
+            setPages(pages.items as any);
+        });
     }, [wixApi]);
+
+    useEffect(() => {
+        if (pages.length > 0) {
+            wixApi.getPageData(pages[0]._id).then((data) => {
+                setPageData(data.items);
+            });
+        }
+    }, [pages, wixApi]);
 
     return (
         <div className={classNames(styles.root, className)}>
+            <h1>Page List</h1>
+            <pre>{JSON.stringify(pages, null, 2)}</pre>
+            <h1>block List</h1>
+            <BlocksRenderer blocks={pageData as any} />
             <div className={styles['hero-paragraph']}>
                 <HeroImage
                     title="Incredible Prices on All Your Favorite Items"
@@ -34,7 +52,6 @@ export const HomePage = ({ className }: HomePageProps) => {
                     primaryButtonLabel="Shop Now"
                     topLabelClassName={styles['top-label-highlighted']}
                     onPrimaryButtonClick={() => navigate(ROUTES.products.to())}
-                    imageUrl="https://images.unsplash.com/photo-1622542796254-5b9c46ab0d2f?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dwixplosives.github.io/codux-assets-storage/add-panel/image-placeholder.jpg"
                 />
                 <h1 className={styles['hero-title']}>
                     Heading 1<p className={styles.HPprgrp}>This is a paragraph.</p>
@@ -50,7 +67,7 @@ export const HomePage = ({ className }: HomePageProps) => {
                                 price={product.price ?? undefined}
                             />
                         </Link>
-                    ) : null,
+                    ) : null
                 )}
             </div>
         </div>

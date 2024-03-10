@@ -61,6 +61,18 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 ],
             });
         },
+        getPages: () => {
+            return wixClient.items.queryDataItems({ dataCollectionId: 'Pages' }).find();
+        },
+        getPageData: (id: string) => {
+            return wixClient.items
+                .queryDataItems({
+                    dataCollectionId: 'blocks',
+                    includeReferencedItems: ['hero', 'paragraph'],
+                })
+                .eq('Pages_content', id)
+                .find();
+        },
     };
 }
 
