@@ -9,7 +9,7 @@ export const Paragraph = (props: ParagraphProps) => {
         <div>
             <h3>{props.title}</h3>
             <img src={props.image} alt={props.title} />
-            <p>{props.content}</p>
+            {/* <p>{props.content}</p> */}
         </div>
     );
 };

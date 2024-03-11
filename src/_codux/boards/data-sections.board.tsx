@@ -5,5 +5,7 @@ export default createBoard({
     name: 'Data Sections',
     Board: () => <SectionWrapper />,
     isSnippet: false,
-    environmentProps: {},
+    environmentProps: {
+        canvasWidth: 339,
+    },
 });

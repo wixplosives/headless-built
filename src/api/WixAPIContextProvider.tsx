@@ -1,5 +1,5 @@
 import { currentCart } from '@wix/ecom';
-import { OAuthStrategy, createClient } from '@wix/sdk';
+import { OAuthStrategy, createClient, media } from '@wix/sdk';
 import { collections, items } from '@wix/data';
 import { products } from '@wix/stores';
 import React, { FC, useMemo } from 'react';
@@ -27,6 +27,17 @@ const rendererToTableName = {
 };
 
 function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
+    const getPageData = (id: string) => {
+        return wixClient.items
+            .queryDataItems({
+                dataCollectionId: 'blocks',
+                includeReferencedItems: ['hero', 'paragraph'],
+                returnTotalCount: true,
+                consistentRead: true,
+            })
+            .eq('Pages_content', id)
+            .find();
+    };
     return {
         getAllProducts: async () => {
             return (await wixClient.products.queryProducts().find()).items;
@@ -69,17 +80,22 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
         getPages: () => {
             return wixClient.items.queryDataItems({ dataCollectionId: 'Pages' }).find();
         },
-        getPageData: (id: string) => {
-            return wixClient.items
+        getPageDataByUri: async (uri: string) => {
+            const page = await wixClient.items
                 .queryDataItems({
-                    dataCollectionId: 'blocks',
-                    includeReferencedItems: ['hero', 'paragraph'],
-                    returnTotalCount: true,
+                    dataCollectionId: 'Pages',
                     consistentRead: true,
+                    returnTotalCount: true,
                 })
-                .eq('Pages_content', id)
+                .eq('route', uri)
                 .find();
+            if (page.items.length === 0 || !page.items[0]._id) {
+                return null;
+            }
+
+            return getPageData(page.items[0]._id);
         },
+        getPageData,
         getBlocksOfType: (type: keyof typeof blockRenderers, limit = 50, skip = 0) => {
             return wixClient.items
                 .queryDataItems({

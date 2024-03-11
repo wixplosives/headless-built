@@ -74,7 +74,7 @@ export function SingleSectionRenderer() {
                     <button
                         className={BlockWrapperRealData_module.pagingBtn}
                         onClick={() => {
-                            setSelectedBlockIdx(Math.min((totalItems || 1) - 1, blockIdx + 1));
+                            setSelectedBlockIdx(Math.min((totalItems || 1) , blockIdx + 1));
                         }}
                         disabled={blockIdx > (totalItems || 1) - 1}
                     >

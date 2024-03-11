@@ -1,13 +1,13 @@
 import { blockRenderers } from './blocks';
 import { type items } from '@wix/data';
-interface BlockData {
-    type: keyof typeof blockRenderers;
-    props: any;
-}
+type BlockData = {
+    [key in keyof typeof blockRenderers]: any;
+};
 interface BlocksRendererProps {
     blocks: items.DataItem[];
 }
 
+const renderers = Object.keys(blockRenderers);
 export const BlocksRenderer = ({ blocks }: BlocksRendererProps) => {
     return (
         <>
@@ -16,11 +16,14 @@ export const BlocksRenderer = ({ blocks }: BlocksRendererProps) => {
                 if (!data) {
                     return <div>no block data</div>;
                 }
-                const Component = blockRenderers[data.type];
-                if (!Component) {
-                    return <div> unknown block</div>;
+                for (const [key, Renderer] of Object.entries(blockRenderers)) {
+                    if (data[key as keyof typeof blockRenderers]) {
+                        return (
+                            <Renderer key={index} {...data[key as keyof typeof blockRenderers]} />
+                        );
+                    }
                 }
-                return <Component key={index} {...data.props} />;
+                return <div>unknown block</div>;
             })}
         </>
     );

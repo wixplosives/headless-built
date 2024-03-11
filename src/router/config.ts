@@ -4,6 +4,7 @@ const HOME = '/';
 const ABOUT = '/about';
 const PRODUCTS = '/products';
 const PRODUCT = `/product/:id`;
+export const DYNAMIC_SECTION_BASED_PAGES = `/:uri`;
 
 export const ROUTES = {
     home: { route: HOME, to: () => HOME },
@@ -19,4 +20,5 @@ export type ROUTE_KEYS = keyof typeof ROUTES;
 
 export type RouteParams = {
     [PRODUCT]: { id: string };
+    [DYNAMIC_SECTION_BASED_PAGES]: { uri: string };
 };
