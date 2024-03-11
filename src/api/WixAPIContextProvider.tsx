@@ -3,6 +3,7 @@ import { OAuthStrategy, createClient } from '@wix/sdk';
 import { collections, items } from '@wix/data';
 import { products } from '@wix/stores';
 import React, { FC, useMemo } from 'react';
+import { blockRenderers } from '../blocks/blocks';
 
 // const refreshToken = JSON.parse(Cookies.get(WIX_REFRESH_TOKEN) || '{}');
 
@@ -20,6 +21,10 @@ function getWixClient() {
         }),
     });
 }
+const rendererToTableName = {
+    hero: 'HeroSectionData',
+    paragraph: 'Paragraphs',
+};
 
 function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
     return {
@@ -69,8 +74,21 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 .queryDataItems({
                     dataCollectionId: 'blocks',
                     includeReferencedItems: ['hero', 'paragraph'],
+                    returnTotalCount: true,
+                    consistentRead: true,
                 })
                 .eq('Pages_content', id)
+                .find();
+        },
+        getBlocksOfType: (type: keyof typeof blockRenderers, limit = 50, skip = 0) => {
+            return wixClient.items
+                .queryDataItems({
+                    dataCollectionId: rendererToTableName[type],
+                    returnTotalCount: true,
+                    consistentRead: true,
+                })
+                .skip(skip)
+                .limit(limit)
                 .find();
         },
     };

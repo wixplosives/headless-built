@@ -1,0 +1,35 @@
+.blockSelectorTarget {
+    padding: 2px;
+    margin: 0px 2px;
+    cursor: pointer;
+}
+
+.controls {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    left: 0px;
+    background-color: #ffffff;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    justify-content: space-between;
+}
+
+.paging {}
+
+.pagingBtn {
+    padding: 1px;
+    color: lightblue;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid lightblue;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.pagingBtn:disabled {
+    background-color: #eee;
+}

@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/product-card/product-card';
 import { BlocksRenderer } from '../../blocks/blocks-renderer';
 import { type items } from '@wix/data';
+import { SingleSectionRenderer } from '../../_codux/board-wrappers/section-wrapper-real-data';
 export interface HomePageProps {
     className?: string;
 }
@@ -40,10 +41,8 @@ export const HomePage = ({ className }: HomePageProps) => {
 
     return (
         <div className={classNames(styles.root, className)}>
-            <h1>Page List</h1>
-            <pre>{JSON.stringify(pages, null, 2)}</pre>
-            <h1>block List</h1>
-            <BlocksRenderer blocks={pageData as any} />
+            <SingleSectionRenderer />
+
             <div className={styles['hero-paragraph']}>
                 <HeroImage
                     title="Incredible Prices on All Your Favorite Items"
