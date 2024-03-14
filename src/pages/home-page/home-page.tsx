@@ -7,10 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import { WixAPIContext } from '../../api/WixAPIContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProductCard } from '../../components/product-card/product-card';
-import { BlocksRenderer } from '../../blocks/blocks-renderer';
 import { type items } from '@wix/data';
-import { SingleSectionRenderer } from '../../_codux/board-wrappers/section-wrapper-real-data';
-import { SinglePageRenderer } from '../../_codux/board-wrappers/dynamic-page-wrapper-real-data';
 export interface HomePageProps {
     className?: string;
 }
@@ -42,8 +39,6 @@ export const HomePage = ({ className }: HomePageProps) => {
 
     return (
         <div className={classNames(styles.root, className)}>
-            <SinglePageRenderer />
-
             <div className={styles['hero-paragraph']}>
                 <HeroImage
                     title="Incredible Prices on All Your Favorite Items"

@@ -35,6 +35,7 @@ function getWixApi(wixClient: ReturnType<typeof getWixClient>) {
                 returnTotalCount: true,
                 consistentRead: true,
             })
+            .ascending('ordering')
             .eq('Pages_content', id)
             .find();
     };

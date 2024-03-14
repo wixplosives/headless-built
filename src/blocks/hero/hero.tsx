@@ -1,16 +1,24 @@
+import { media } from '@wix/sdk';
+import { RichTextViewer } from '../../components/rich-text-viewer/rich-text-viewer';
+import { calcMediaSet, useWixImageSet } from '../../hooks/use-wix-image-set';
+
 export interface HeroProps {
     title: string;
     text: string;
-    /** @format image-url */
-    image?: string;
+    image: string;
+    url: string;
+    tags: string[];
+    richcontent: any;
 }
 
 export const Hero = (props: HeroProps) => {
+    const imageSet = calcMediaSet(props.image);
     return (
         <div>
             <h1>{props.title}</h1>
-            <p>{props.text}</p>
-            <img src={props.image} alt={props.title} />
+            <RichTextViewer text={props.text} />
+            <img alt={props.title} {...calcMediaSet(props.image)} />
+            {props.url}
         </div>
     );
 };

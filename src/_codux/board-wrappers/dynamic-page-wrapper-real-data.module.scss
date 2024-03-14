@@ -16,9 +16,12 @@
     align-items: center;
     padding: 12px;
     justify-content: space-between;
+    border-bottom: 1px solid #000000;
+    box-shadow: 3px 3px 2px black;
 }
 
-.paging {}
+.paging {
+}
 
 .pagingBtn {
     padding: 1px;
@@ -33,4 +36,7 @@
 
 .pagingBtn:disabled {
     background-color: #eee;
+}
+.siteWrapper {
+    margin-top: 30px;
 }

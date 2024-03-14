@@ -1,8 +1,12 @@
 import { createBoard } from '@wixc3/react-board';
-import { SinglePageRenderer } from '../../board-wrappers/dynamic-page-wrapper-real-data';
+import { SectionWrapper } from '../../board-wrappers/dynamic-page-wrapper-real-data';
 
 export default createBoard({
     name: 'SinglePageRenderer',
-    Board: () => <SinglePageRenderer />,
+    Board: () => <SectionWrapper />,
     isSnippet: true,
+    environmentProps: {
+        canvasWidth: 829,
+        windowWidth: 934,
+    },
 });

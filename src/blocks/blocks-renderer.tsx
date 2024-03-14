@@ -7,7 +7,6 @@ interface BlocksRendererProps {
     blocks: items.DataItem[];
 }
 
-const renderers = Object.keys(blockRenderers);
 export const BlocksRenderer = ({ blocks }: BlocksRendererProps) => {
     return (
         <>

@@ -2,10 +2,11 @@ import { RouteObject } from 'react-router-dom';
 import { SiteWrapper } from '../components/site-wrapper/site-wrapper';
 import { HomePage } from '../pages/home-page/home-page';
 import { AboutPage } from '../pages/about-page/about-page';
-import { DYNAMIC_SECTION_BASED_PAGES, ROUTES } from './config';
+import { DYNAMIC_SECTION_BASED_PAGES, DYNAMIC_SECTION_BASED_PAGE_EDITOR, ROUTES } from './config';
 import { ProductPage } from '../pages/product-page/product-page';
 import { ProductsPage } from '../pages/products-page/products-page';
 import { SectionsBasedPage } from '../pages/sections-based-page/sections-based-page';
+import { SectionsBasedEditor } from '../pages/sections-based-editor/sections-based-editor';
 
 export const routes: RouteObject[] = [
     {
@@ -17,6 +18,7 @@ export const routes: RouteObject[] = [
             { path: ROUTES.product.route, element: <ProductPage /> },
             { path: ROUTES.about.route, element: <AboutPage /> },
             { path: DYNAMIC_SECTION_BASED_PAGES, element: <SectionsBasedPage /> },
+            { path: DYNAMIC_SECTION_BASED_PAGE_EDITOR, element: <SectionsBasedEditor /> },
         ],
     },
 ];

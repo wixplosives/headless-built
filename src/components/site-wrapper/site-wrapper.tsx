@@ -15,11 +15,23 @@ export interface SiteWrapperProps {
 
 export const SiteWrapper = ({ className }: SiteWrapperProps) => {
     return (
+        <SiteContentWrapper className={className}>
+            <Outlet />
+        </SiteContentWrapper>
+    );
+};
+
+export const SiteContentWrapper = ({
+    children,
+    className,
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) => {
+    return (
         <div className={classNames(styles.root, className)}>
             <Header />
-            <div className={styles.content}>
-                <Outlet />
-            </div>
+            <div className={styles.content}>{children}</div>
             <Footer />
         </div>
     );

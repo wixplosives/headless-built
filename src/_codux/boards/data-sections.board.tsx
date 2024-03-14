@@ -6,6 +6,6 @@ export default createBoard({
     Board: () => <SectionWrapper />,
     isSnippet: false,
     environmentProps: {
-        canvasWidth: 339,
+        canvasWidth: 629,
     },
 });

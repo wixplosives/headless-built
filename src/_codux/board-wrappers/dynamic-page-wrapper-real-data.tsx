@@ -12,10 +12,20 @@ import {
 } from '@radix-ui/react-dropdown-menu';
 import BlockWrapperRealData_module from './dynamic-page-wrapper-real-data.module.scss';
 import { BlocksRenderer } from '../../blocks/blocks-renderer';
+import { SiteContentWrapper } from '../../components/site-wrapper/site-wrapper';
+import { ComponentWrapper } from './component-wrapper';
+import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { BlocksEditor } from '../../blocks-editor/blocks-editor';
 export function SectionWrapper() {
+    const router = createMemoryRouter([
+        {
+            path: '*',
+            element: <SinglePageRenderer />,
+        },
+    ]);
     return (
         <WixAPIContextProvider>
-            <SinglePageRenderer />
+            <RouterProvider router={router} />
         </WixAPIContextProvider>
     );
 }
@@ -23,6 +33,7 @@ export function SectionWrapper() {
 export function SinglePageRenderer() {
     const api = useContext(WixAPIContext);
     const [selectedPage, setSelectedPage] = useState<items.DataItem>();
+    const [isEditing, setIsEditing] = useState(false);
     const pagesData = useAsync(() => api.getPages(), []);
     const renderedPage = selectedPage || pagesData?.items[0];
     const pageData = useAsync(() => {
@@ -61,8 +72,34 @@ export function SinglePageRenderer() {
                         </DropdownMenuContent>
                     </DropdownMenuPortal>
                 </DropdownMenu>
+                <label>Mode</label>
+                <DropdownMenu modal>
+                    <DropdownMenuTrigger
+                        className={BlockWrapperRealData_module.blockSelectorTarget}
+                    >
+                        {isEditing ? 'Editing' : 'Viewing'}
+                    </DropdownMenuTrigger>
+                    <DropdownMenuPortal>
+                        <DropdownMenuContent>
+                            <DropdownMenuItem
+                                onSelect={() => {
+                                    setIsEditing(true);
+                                }}
+                            >
+                                Editing
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                                onSelect={() => {
+                                    setIsEditing(false);
+                                }}
+                            >
+                                Viewing
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenuPortal>
+                </DropdownMenu>
             </div>
-            <div>
+            <div className={BlockWrapperRealData_module.siteWrapper}>
                 {!pagesData ? (
                     'loading'
                 ) : pagesData.items.length === 0 ? (
@@ -70,9 +107,13 @@ export function SinglePageRenderer() {
                 ) : !pageData ? (
                     'page not found'
                 ) : (
-                    <div>
-                        <BlocksRenderer {...{ blocks: pageData.items }} />
-                    </div>
+                    <SiteContentWrapper>
+                        {isEditing ? (
+                            <BlocksEditor blocks={pageData.items} />
+                        ) : (
+                            <BlocksRenderer blocks={pageData.items} />
+                        )}
+                    </SiteContentWrapper>
                 )}
             </div>
         </div>
