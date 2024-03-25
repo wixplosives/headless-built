@@ -4,6 +4,11 @@ import { NewBlockButton } from './blocks-editor-parts/new-block-button';
 import { useMemo, useReducer } from 'react';
 import React from 'react';
 import { blockEditors } from './blocks-editor-parts/block-sub-editors';
+import { ReactComponent as EditSvg } from './icons/edit.svg';
+import { ReactComponent as DeleteSvg } from './icons/delete.svg';
+import { ReactComponent as MoveUpSvg } from './icons/move-up.svg';
+import { ReactComponent as MoveDownSvg } from './icons/move-down.svg';
+import BlocksEditor_module from './blocks-editor.module.scss';
 type BlockData = {
     [key in keyof typeof blockRenderers]: any;
 };
@@ -82,10 +87,16 @@ export const BlocksEditor = ({ blocks }: BlocksEditorProps) => {
             <NewBlockButton addBlock={addBlock} />
             {allBlocks.map((block, index) => {
                 return (
-                    <React.Fragment key={index}>
+                    <div key={index}>
+                        <div className={BlocksEditor_module.blockActions}>
+                            <EditSvg className={BlocksEditor_module.actionIcon} />
+                            <MoveUpSvg className={BlocksEditor_module.actionIcon} />
+                            <MoveDownSvg className={BlocksEditor_module.actionIcon} />
+                            <DeleteSvg className={BlocksEditor_module.actionIcon} />
+                        </div>
                         <BlockRenderer key={index} block={block} />
                         <NewBlockButton addBlock={addBlock} afterBlock={block} />
-                    </React.Fragment>
+                    </div>
                 );
             })}
         </div>

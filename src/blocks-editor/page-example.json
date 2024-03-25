@@ -1,0 +1,16 @@
+{
+    "$schema": "./blocks-editor.schema.json",
+    "children": [
+        {
+            "type": "heroSection",
+            "backgroundImage": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=",
+            "title": "Welcome to the Blocks Editor",
+            "subtitle": "This is a simple hero section block. You can use it to display a title and a subtitle, and set a background image."
+        },
+        {
+            "type": "gallerySection",
+            "title": "Gallery Section",
+            "images": ["https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=", "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=", "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s="]
+        }
+    ]
+}

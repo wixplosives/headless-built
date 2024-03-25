@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Dynamic site data",
+    "definitions": {
+        "blockBuilt":{
+            "type": "object",
+            "properties": {
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pageSections"
+                    }
+                }
+                
+            }
+        },
+        "pageTemplates":{
+            "oneOf": [{
+                "$ref": "#/definitions/blockBuilt"
+            }]
+        },
+        "heroSection": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["heroSection"]
+                },
+                "title": {
+                    "type": "string"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "backgroundImage": {
+
+                    "type": "string",
+                    "format": "image-url"
+                }
+            }
+        },
+        "gallerySection": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["gallerySection"]
+                },
+                "title": {
+                    "type": "string"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "image-url"
+                    }
+                }
+            }
+        },
+        "pageSections": {
+            "oneOf": [{
+                "$ref": "#/definitions/heroSection"
+            }, {
+                "$ref": "#/definitions/gallerySection"
+            }]
+        }
+    },
+    "oneOf": [{
+        "$ref": "#/definitions/blockBuilt"
+    }]
+}
