@@ -1047,14 +1047,14 @@
     react-refresh "^0.14.0"
 
 "@wix/data@^1.0.80":
-  version "1.0.83"
-  resolved "https://registry.yarnpkg.com/@wix/data/-/data-1.0.83.tgz#1e34c107ebe272adbe1663bd74c94e1a12b3d081"
-  integrity sha512-j744l7QGsG4QAkRMPa86mNXUcBv2NfARz2BG/7HE0RXG72fwa0qRIYmRyA2eO1LDBmauH26vlOIrQhwaTnB1Fg==
+  version "1.0.85"
+  resolved "https://registry.yarnpkg.com/@wix/data/-/data-1.0.85.tgz#19bade4d7e5c9cadb43cdbf58ab855ca338f7940"
+  integrity sha512-lSvdFZkOhB5Tzl1m8HLU5HfmQOSTP5ATA7GMc1bwShifKuby99Ch+0f6vLaCvXAuAA0t0NEEQsfmvLxOkfswNg==
   dependencies:
     "@wix/metro-runtime" "^1.1528.0"
     "@wix/motion-edm-autogen-query-wrapper" "^1.0.37"
     "@wix/sdk-runtime" "^0.2.7"
-    "@wix/sdk-types" "^1.5.3"
+    "@wix/sdk-types" "^1.5.9"
 
 "@wix/draft-js@0.0.11":
   version "0.0.11"
@@ -1077,9 +1077,9 @@
     "@wix/sdk-types" "^1.5.3"
 
 "@wix/filter-builder@^1.0.39":
-  version "1.0.46"
-  resolved "https://registry.yarnpkg.com/@wix/filter-builder/-/filter-builder-1.0.46.tgz#d1eeb6cb9f49473f8d2a14656a4ed1b819c1e97c"
-  integrity sha512-5/Kv3a21OPuguDjLCyfiOsYRQMpXSxu+LwGtJKDMtKBiarnGUk8U1j0ACENG+lycBFomTpeFzdKWsRGmreo3jA==
+  version "1.0.47"
+  resolved "https://registry.yarnpkg.com/@wix/filter-builder/-/filter-builder-1.0.47.tgz#931cce440a39937b7628fc0d55cf764943214edd"
+  integrity sha512-vlqG3d5BRdvhuvfRGkKJVzh0NzMZCtdalEWkp65SKZOIuyXw9WRjxgAFyLAOvYkHveeUOJM81psJyXJSurN78A==
   dependencies:
     "@babel/runtime" "^7.22.15"
     kind-of "~5.1.0"
@@ -1121,9 +1121,9 @@
     "@babel/runtime" "^7.0.0"
 
 "@wix/metro-runtime@^1.1528.0":
-  version "1.1660.0"
-  resolved "https://registry.yarnpkg.com/@wix/metro-runtime/-/metro-runtime-1.1660.0.tgz#690b8c20cfbff5de44355088baadb8420b4fba40"
-  integrity sha512-I5r9kDKjvLspp/siPOXE+MLSvKKBEQ/t/00kE+9HO4R/BtT0/CaiVP4MeL2YnMnQje26fFqpaqwXHvcmoBKNOA==
+  version "1.1662.0"
+  resolved "https://registry.yarnpkg.com/@wix/metro-runtime/-/metro-runtime-1.1662.0.tgz#c4a84561a30fb4baa89aa517296bb49ccd1909e6"
+  integrity sha512-mqm1xQA7GKvYd2qmvYl4D03eZ3sxKiVjdEQRQ47Lk7EldJEczqaasXCcyKC0JUnRkv4umeYH64kwugdoCzZoIA==
   dependencies:
     "@wix/metro-public-utils" "1.0.24"
     "@wix/motion-edm-autogen-p13n" "1.0.57"

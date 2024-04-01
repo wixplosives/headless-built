@@ -35,12 +35,13 @@
     "wix-rich-content-plugin-link": "^9.18.1",
     "wix-rich-content-plugin-link-preview": "^9.18.1",
     "wix-rich-content-plugin-mentions": "^9.18.1",
-    "wix-rich-content-plugin-social-polls":"^9.18.1",
+    "wix-rich-content-plugin-social-polls": "^9.18.1",
     "wix-rich-content-plugin-spoiler": "^9.18.1",
     "wix-rich-content-plugin-table": "^9.18.1",
-    "wix-rich-content-plugin-text-color":"^9.18.1",
-    "wix-rich-content-plugin-vertical-embed":"^9.18.1",
-    "wix-rich-content-plugin-video": "^9.18.1"  },
+    "wix-rich-content-plugin-text-color": "^9.18.1",
+    "wix-rich-content-plugin-vertical-embed": "^9.18.1",
+    "wix-rich-content-plugin-video": "^9.18.1"
+  },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1",
     "@types/react": "^18.2.45",
